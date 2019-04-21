@@ -4,12 +4,18 @@
 	<meta charset="utf-8">
 	<title>JavaScript Practice</title>
 	<style>
+		body {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
 		.box {
 			width: 100px;
 			height: 100px;
 			background: skyblue;
 			cursor: pointer;
 			transition: 0.8s;
+			margin: 0 8px 8px 0;
 		}
 
 		.circle {
@@ -20,17 +26,27 @@
 	</style>
 </head>
 <body>
-	<div id="target" class="box"> </div>
+	<div id="target1" class="box"> </div>
+	<div id="target2" class="box"> </div>
+	<div id="target3" class="box"> </div>
 
 	<script>
 		'use strict'; /*ブラウザが間違いを探してくれる*/
 
+		const target1 = document.getElementById('target1');
+		const target2 = document.getElementById('target2');
+		const target3 = document.getElementById('target3');
 		// document.getElementById() ブラウザが用意しているもの
-		document.getElementById('target').addEventListener('click',function() {
-			// document.getElementById('target').style.background = 'pink';
-			// document.getElementById('target').style.borderRadius = '50%';
-			document.getElementById('target').classList.add('circle');
+		target1.addEventListener('click',function() {
+			target1.classList.toggle('circle');
 		});
+		target2.addEventListener('click',function() {
+			target2.classList.toggle('circle');
+		});
+		target3.addEventListener('click',function() {
+			target3.classList.toggle('circle');
+		});
+
 	</script>
 </body>
 </html>
