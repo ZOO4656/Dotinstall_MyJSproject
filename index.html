@@ -16,6 +16,8 @@
 			cursor: pointer;
 			transition: 0.8s;
 			margin: 0 8px 8px 0;
+			text-align: center;
+			line-height: 100px;
 		}
 
 		.circle {
@@ -23,30 +25,52 @@
 			border-radius: 50%;
 			transform: rotate(360deg);
 		}
+
+		.win {
+			background: pink;
+			border-radius: 50%;
+			transform: rotate(360deg);
+		}
+
+		.lose {
+			transform: scale(0.9);
+		}
 	</style>
 </head>
 <body>
-	<div id="target1" class="box"> </div>
-	<div id="target2" class="box"> </div>
-	<div id="target3" class="box"> </div>
-
 	<script>
 		'use strict'; /*ブラウザが間違いを探してくれる*/
 
-		const target1 = document.getElementById('target1');
-		const target2 = document.getElementById('target2');
-		const target3 = document.getElementById('target3');
-		// document.getElementById() ブラウザが用意しているもの
-		target1.addEventListener('click',function() {
-			target1.classList.toggle('circle');
-		});
-		target2.addEventListener('click',function() {
-			target2.classList.toggle('circle');
-		});
-		target3.addEventListener('click',function() {
-			target3.classList.toggle('circle');
-		});
+		const num = 5;
+		const winner = Math.floor(Math.random() * num); //0-4
 
+		for(let i= 0; i < num; i++ ) {
+			// const=定数を宣言、document.createElement('div')=divタグを生成している
+			const div = document.createElement('div');
+
+			// Classをdivに対して付与
+			div.classList.add('box');
+			if(i === winner) {
+				div.dataset.result = 'win'
+			}else {div.dataset.result = 'lose'}
+
+			// divに対してclickしたときのイベントを付与
+			// イベントの内容としてメソッドを使いcircleのcssを使用
+			div.addEventListener('click', function() {
+				if(div.dataset.result === 'win') {
+					div.textContent  ='Win!';
+					div.classList.add('win');
+				}else{
+					div.textContent  ='Lose!';
+					div.classList.add('lose')
+
+				}
+			});
+
+			// bodyタグの子要素であることを宣言、ここで初めて出力できる
+			document.body.appendChild(div);
+			// document.getElementById() ブラウザが用意しているもの
+		}
 	</script>
 </body>
 </html>
