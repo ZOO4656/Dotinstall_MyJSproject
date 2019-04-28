@@ -44,7 +44,7 @@
 		const num = 5;
 		const winner = Math.floor(Math.random() * num); //0-4
 
-		for(let i= 0; i < num; i++ ) {
+		for(let i = 0; i < num; i++ ) {
 			// const=定数を宣言、document.createElement('div')=divタグを生成している
 			const div = document.createElement('div');
 
@@ -52,18 +52,19 @@
 			div.classList.add('box');
 			if(i === winner) {
 				div.dataset.result = 'win'
-			}else {div.dataset.result = 'lose'}
+			}else {
+				div.dataset.result = 'lose'
+			}
 
 			// divに対してclickしたときのイベントを付与
 			// イベントの内容としてメソッドを使いcircleのcssを使用
 			div.addEventListener('click', function() {
 				if(div.dataset.result === 'win') {
-					div.textContent  ='Win!';
+					div.textContent = 'Win!';
 					div.classList.add('win');
 				}else{
 					div.textContent  ='Lose!';
 					div.classList.add('lose')
-
 				}
 			});
 
